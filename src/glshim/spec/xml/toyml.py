@@ -96,7 +96,7 @@ def to_yml(filename):
     elif xml.tag == 'registry':
         functions = khronos_to_yml(xml)
     else:
-        print 'unrecognized root tag:', xml.tag
+        print('unrecognized root tag:', xml.tag)
 
     yml = yaml.dump(dict(functions))
     with open(filename.replace('xml', 'yml'), 'w') as o:
@@ -105,7 +105,7 @@ def to_yml(filename):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) < 2:
-        print 'Usage: {} <file.xml> [file.xml...]'.format(sys.argv[0])
+        print('Usage: {} <file.xml> [file.xml...]'.format(sys.argv[0]))
         sys.exit(1)
     
     for name in sys.argv[1:]:

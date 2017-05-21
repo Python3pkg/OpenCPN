@@ -76,13 +76,13 @@ def gen(files, template, guard_name, headers,
     formats = []
     unique_formats = set()
     for data in files:
-        if deep and not isinstance(data.values()[0], list):
+        if deep and not isinstance(list(data.values())[0], list):
             functions = []
-            for cat, f in data.items():
+            for cat, f in list(data.items()):
                 if not cats or cat in cats:
-                    functions.extend(f.items())
+                    functions.extend(list(f.items()))
         else:
-            functions = data.items()
+            functions = list(data.items())
 
         for name, args in sorted(functions):
             props = {}
@@ -155,6 +155,6 @@ if __name__ == '__main__':
         cats = args.cats.split(',')
     else:
         cats = None
-    print gen(files, args.template, args.name,
+    print(gen(files, args.template, args.name,
               args.headers, args.deep, cats,
-              args.ifdef, args.ifndef)
+              args.ifdef, args.ifndef))
